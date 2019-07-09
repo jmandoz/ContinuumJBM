@@ -16,6 +16,9 @@
 		A42C25B822D5335D00FA0D64 /* PostDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C25B722D5335D00FA0D64 /* PostDetailTableViewController.swift */; };
 		A42C25BA22D533AE00FA0D64 /* AddPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C25B922D533AE00FA0D64 /* AddPostTableViewController.swift */; };
 		A42C25BC22D533D800FA0D64 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C25BB22D533D800FA0D64 /* Post.swift */; };
+		A42C25BE22D5387000FA0D64 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C25BD22D5387000FA0D64 /* PostController.swift */; };
+		A42C25C022D53C7300FA0D64 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C25BF22D53C7300FA0D64 /* PostTableViewCell.swift */; };
+		A42C25C222D5516C00FA0D64 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C25C122D5516C00FA0D64 /* DateFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		A42C25B722D5335D00FA0D64 /* PostDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailTableViewController.swift; sourceTree = "<group>"; };
 		A42C25B922D533AE00FA0D64 /* AddPostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostTableViewController.swift; sourceTree = "<group>"; };
 		A42C25BB22D533D800FA0D64 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		A42C25BD22D5387000FA0D64 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
+		A42C25BF22D53C7300FA0D64 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		A42C25C122D5516C00FA0D64 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,7 @@
 				A42C25AE22D5317900FA0D64 /* View */,
 				A42C25B022D5318A00FA0D64 /* Cotroller */,
 				A42C25AD22D5317100FA0D64 /* Resources */,
+				A42C25C122D5516C00FA0D64 /* DateFormatter.swift */,
 			);
 			path = Continuum;
 			sourceTree = "<group>";
@@ -86,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				A42C259F22D5314D00FA0D64 /* Main.storyboard */,
+				A42C25BF22D53C7300FA0D64 /* PostTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -110,6 +118,7 @@
 		A42C25B122D5319F00FA0D64 /* ModelController */ = {
 			isa = PBXGroup;
 			children = (
+				A42C25BD22D5387000FA0D64 /* PostController.swift */,
 			);
 			path = ModelController;
 			sourceTree = "<group>";
@@ -196,11 +205,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A42C25C222D5516C00FA0D64 /* DateFormatter.swift in Sources */,
+				A42C25C022D53C7300FA0D64 /* PostTableViewCell.swift in Sources */,
 				A42C259C22D5314D00FA0D64 /* AppDelegate.swift in Sources */,
 				A42C25B622D532F000FA0D64 /* PostListTableViewController.swift in Sources */,
 				A42C25BA22D533AE00FA0D64 /* AddPostTableViewController.swift in Sources */,
 				A42C25B822D5335D00FA0D64 /* PostDetailTableViewController.swift in Sources */,
 				A42C25BC22D533D800FA0D64 /* Post.swift in Sources */,
+				A42C25BE22D5387000FA0D64 /* PostController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,7 +360,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3ZLX8VSJT3;
-				INFOPLIST_FILE = Continuum/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Continuum/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -366,7 +378,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3ZLX8VSJT3;
-				INFOPLIST_FILE = Continuum/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Continuum/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
