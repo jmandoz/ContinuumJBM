@@ -10,6 +10,8 @@ import UIKit
 
 class AddPostTableViewController: UITableViewController {
     
+    weak var delegate: AddPostTableViewControllerDelegate?
+    
     var selectedImage: UIImage?
     @IBOutlet weak var selectImageButton: UIButton!
     
@@ -36,8 +38,8 @@ class AddPostTableViewController: UITableViewController {
     }
     
     @IBAction func imageButtonTapped(_ sender: Any) {
-        selectImageButton.setTitle("", for: .normal)
-        photoImageView.image = UIImage(named: "spaceEmptyState")
+        presentImagePickerActionSheet()
+        
     }
     
     
@@ -62,4 +64,40 @@ class AddPostTableViewController: UITableViewController {
     }
  
 
+}
+
+extension AddPostTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func presentImagePickerActionSheet(){
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        let actionSheet = UIAlertController(title: "Select a photo", message: nil, preferredStyle: .actionSheet)
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            actionSheet.addAction(UIAlertAction(title: "Photo", style: .default, handler: { (_) in
+                imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
+                self.present(imagePickerController, animated: true, completion:  nil)
+            }))
+        }
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (_) in
+                imagePickerController.sourceType = UIImagePickerController.SourceType.camera
+                self.present(imagePickerController, animated: true, completion: nil)
+            }))
+        }
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(actionSheet, animated: true)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        if let photo = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            selectImageButton.setTitle("", for: .normal)
+            photoImageView.image = photo
+            delegate?.addPostTableViewControllerSelected(image: photo)
+        }
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
+protocol AddPostTableViewControllerDelegate: class {
+    func addPostTableViewControllerSelected(image: UIImage)
 }

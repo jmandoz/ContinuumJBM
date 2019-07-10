@@ -19,6 +19,7 @@
 		A42C25BE22D5387000FA0D64 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C25BD22D5387000FA0D64 /* PostController.swift */; };
 		A42C25C022D53C7300FA0D64 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C25BF22D53C7300FA0D64 /* PostTableViewCell.swift */; };
 		A42C25C222D5516C00FA0D64 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C25C122D5516C00FA0D64 /* DateFormatter.swift */; };
+		A42C25C422D57AB800FA0D64 /* SearchableRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C25C322D57AB800FA0D64 /* SearchableRecord.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		A42C25BD22D5387000FA0D64 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
 		A42C25BF22D53C7300FA0D64 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		A42C25C122D5516C00FA0D64 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		A42C25C322D57AB800FA0D64 /* SearchableRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchableRecord.swift; path = ../Model/SearchableRecord.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				A42C25A222D5314E00FA0D64 /* Assets.xcassets */,
 				A42C25A422D5314E00FA0D64 /* LaunchScreen.storyboard */,
 				A42C25A722D5314E00FA0D64 /* Info.plist */,
+				A42C25C322D57AB800FA0D64 /* SearchableRecord.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 			files = (
 				A42C25C222D5516C00FA0D64 /* DateFormatter.swift in Sources */,
 				A42C25C022D53C7300FA0D64 /* PostTableViewCell.swift in Sources */,
+				A42C25C422D57AB800FA0D64 /* SearchableRecord.swift in Sources */,
 				A42C259C22D5314D00FA0D64 /* AppDelegate.swift in Sources */,
 				A42C25B622D532F000FA0D64 /* PostListTableViewController.swift in Sources */,
 				A42C25BA22D533AE00FA0D64 /* AddPostTableViewController.swift in Sources */,
