@@ -28,7 +28,7 @@ class AddPostTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.hideKeyboardWhenTappedAround()
     }
     
     
@@ -39,7 +39,6 @@ class AddPostTableViewController: UITableViewController {
     
     @IBAction func imageButtonTapped(_ sender: Any) {
         presentImagePickerActionSheet()
-        
     }
     
     
@@ -52,8 +51,6 @@ class AddPostTableViewController: UITableViewController {
             self.tabBarController?.selectedIndex = 0
         }
     }
-    
-    
     
     // MARK: - Navigation
 
@@ -100,4 +97,15 @@ extension AddPostTableViewController: UIImagePickerControllerDelegate, UINavigat
 }
 protocol AddPostTableViewControllerDelegate: class {
     func addPostTableViewControllerSelected(image: UIImage)
+}
+extension AddPostTableViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddPostTableViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }

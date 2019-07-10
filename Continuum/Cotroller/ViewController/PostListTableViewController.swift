@@ -79,3 +79,4 @@ extension PostListTableViewController: UISearchBarDelegate {
         isSearching = false
     }
 }
+
