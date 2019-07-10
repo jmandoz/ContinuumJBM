@@ -23,19 +23,13 @@ class PostDetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     @IBAction func likeButtonTapped(_ sender: Any) {
     }
     
     @IBAction func commentButtonTapped(_ sender: Any) {
-        
+        presentCommentAlert()
     }
     
     @IBAction func shareButtonTapped(_ sender: Any) {
@@ -62,6 +56,7 @@ class PostDetailTableViewController: UITableViewController {
         let comment = detailLandingPad?.comments[indexPath.row]
         cell.textLabel?.text = comment?.text
         cell.detailTextLabel?.text = comment?.timestamp.formatDate()
+        
         
         // Configure the cell...
         
@@ -131,11 +126,11 @@ extension PostDetailTableViewController: UITextFieldDelegate {
             let post = self.detailLandingPad else {return}
             if commentText != "" {
                 PostController.shared.addComment(text: commentText, post: post, completion: { (success) in
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-
-                    }
                 })
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    
+                }
             }
         }
         let cancelAction = UIAlertAction(title:"Cancel", style: .destructive)
