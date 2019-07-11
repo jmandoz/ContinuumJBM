@@ -23,6 +23,12 @@ class PostDetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let post = detailLandingPad else { return }
+        PostController.shared.fetchComments(post: post) { (_) in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     @IBAction func likeButtonTapped(_ sender: Any) {
@@ -33,6 +39,10 @@ class PostDetailTableViewController: UITableViewController {
     }
     
     @IBAction func shareButtonTapped(_ sender: Any) {
+        guard let photo = detailLandingPad?.photo,
+            let caption = detailLandingPad?.caption else {return}
+        let activityViewController = UIActivityViewController(activityItems: [photo, caption], applicationActivities: nil)
+        present(activityViewController, animated: true, completion: nil)
     }
     
     func updateViews() {

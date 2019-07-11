@@ -16,16 +16,30 @@ class PostListTableViewController: UITableViewController {
         return isSearching ? resultsArray : PostController.shared.posts
     }
     
+    func requestFullSync(completion: ((Bool) -> Void)?) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        PostController.shared.fetchPosts { (posts) in
+            DispatchQueue.main.async {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                completion?(posts != nil)
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.resultsArray = PostController.shared.posts
-        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.resultsArray = PostController.shared.posts
+            self.tableView.reloadData()
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
+        requestFullSync(completion:nil)
     }
     
     @IBOutlet weak var searchBar: UISearchBar!

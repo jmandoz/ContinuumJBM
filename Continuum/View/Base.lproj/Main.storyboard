@@ -257,27 +257,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="322.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3i-vw-OJ1">
+                                                <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="97G-n4-C0N">
                                                     <rect key="frame" x="20" y="11" width="374" height="301"/>
-                                                    <state key="normal" title="Select Photo"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                     <connections>
-                                                        <action selector="imageButtonTapped:" destination="MR1-z4-sId" eventType="touchUpInside" id="hRZ-J3-ZgU"/>
+                                                        <segue destination="3YE-EV-ilE" kind="embed" identifier="fromContainer" id="1u0-vr-qPZ"/>
                                                     </connections>
-                                                </button>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hDv-ct-dp5">
-                                                    <rect key="frame" x="20" y="11" width="374" height="301"/>
-                                                </imageView>
+                                                </containerView>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="hDv-ct-dp5" firstAttribute="leading" secondItem="Msq-Xl-KtH" secondAttribute="leadingMargin" id="2nd-wl-SXd"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="hDv-ct-dp5" secondAttribute="bottom" id="DeB-hj-DGF"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="E3i-vw-OJ1" secondAttribute="bottom" id="DsM-6J-5ME"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="hDv-ct-dp5" secondAttribute="trailing" id="Oeg-Uc-uYI"/>
-                                                <constraint firstItem="E3i-vw-OJ1" firstAttribute="top" secondItem="Msq-Xl-KtH" secondAttribute="topMargin" id="U2B-Ef-AhD"/>
-                                                <constraint firstItem="hDv-ct-dp5" firstAttribute="top" secondItem="Msq-Xl-KtH" secondAttribute="topMargin" id="XHN-2k-mlD"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="E3i-vw-OJ1" secondAttribute="trailing" id="bs3-E1-ww9"/>
-                                                <constraint firstItem="E3i-vw-OJ1" firstAttribute="leading" secondItem="Msq-Xl-KtH" secondAttribute="leadingMargin" id="iEg-vj-DJ7"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -351,8 +338,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="captionTextField" destination="dDB-PH-U7X" id="J8S-ud-DQB"/>
-                        <outlet property="photoImageView" destination="hDv-ct-dp5" id="gjI-wE-8Ug"/>
-                        <outlet property="selectImageButton" destination="E3i-vw-OJ1" id="KDS-Uo-qe9"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0zz-zk-JJ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -377,6 +362,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lhN-Ha-OoL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="124.6376811594203" y="389.73214285714283"/>
+        </scene>
+        <!--Photo Selector View Controller-->
+        <scene sceneID="zMO-o1-n9G">
+            <objects>
+                <viewController id="3YE-EV-ilE" customClass="PhotoSelectorViewController" customModule="Continuum" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hSN-ba-kPJ">
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="301"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3i-vw-OJ1">
+                                <rect key="frame" x="0.0" y="0.0" width="374" height="301"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Select Photo"/>
+                                <connections>
+                                    <action selector="imageButtonTapped:" destination="3YE-EV-ilE" eventType="touchUpInside" id="AaU-2H-uFn"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hDv-ct-dp5">
+                                <rect key="frame" x="0.0" y="0.0" width="374" height="301"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="photoImageView" destination="hDv-ct-dp5" id="cn3-QG-kd4"/>
+                        <outlet property="selectPhotoButton" destination="E3i-vw-OJ1" id="9cF-6X-BnY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="moS-3O-S1I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1843" y="303"/>
         </scene>
     </scenes>
 </document>
