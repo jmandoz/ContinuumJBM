@@ -22,6 +22,7 @@ class PostController{
     var posts:[Post] = []
     
     //Crud
+    //Create Comment (plus save to the DB)
     func addComment(text: String, post: Post, completion: @escaping (Comment?) -> Void) {
         let comment = Comment(text: text, post: post)
         post.comments.append(comment)
@@ -34,12 +35,12 @@ class PostController{
             }
             guard let record = record else {completion(nil) ; return}
             let comment = Comment(record: record, post: post)
-//            self.incrementCommentCount(post: post, completion: nil)
+            self.incrementCommentCount(post: post, completion: nil)
             completion(comment)
         }
 
     }
-    
+    //Create Post (plus save to the DB)
     func createPostWith(image: UIImage, caption: String, completion: @escaping (Post?) -> Void) {
         let post = Post(photo: image, caption: caption)
         posts.append(post)
@@ -55,7 +56,8 @@ class PostController{
             completion(post)
         }
     }
-    //Read (Fetch)
+    //Read
+    //Fetch posts from the DB
     func fetchPosts(completion: @escaping ([Post]?) -> Void) {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: PostConstants.TypeKey, predicate: predicate)
@@ -71,7 +73,7 @@ class PostController{
             completion(posts)
         }
     }
-    
+    //Fetch Comments from the DB
     func fetchComments(post: Post, completion: @escaping ([Comment]?) -> Void) {
         let postRefence = post.recordID
         let predicate = NSPredicate(format: "%K == %@", CommentConstants.postReferenceKey, postRefence)
@@ -91,7 +93,6 @@ class PostController{
             completion(comments)
         }
     }
-    
     //Increment count function
     func incrementCommentCount(post: Post, completion: ((Bool) -> Void)?) {
         post.commentCount += 1
